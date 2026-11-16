@@ -1,0 +1,85 @@
+"src/cg_omp.cpp", line 53: warning: function "a_sys" was declared but never referenced [declared_but_not_referenced]
+  static void* a_sys(size_t b) { void* p = nullptr; if (posix_memalign(&p, 4096, b)) exit(1); return p; }
+               ^
+
+Remark: individual warnings can be suppressed with "--diag_suppress <warning-name>"
+
+"src/cg_omp.cpp", line 54: warning: function "f_sys" was declared but never referenced [declared_but_not_referenced]
+  static void f_sys(void* p) { free(p); }
+              ^
+
+"src/cg_omp.cpp", line 55: warning: function "cpy" was declared but never referenced [declared_but_not_referenced]
+  static void cpy(void* d, const void* s, size_t b) { memcpy(d, s, b); }
+              ^
+
+_INTERNAL_14_src_cg_omp_cpp_main::a_map(unsigned long):
+     32, Generating target enter data map(create: c[:b])
+_INTERNAL_14_src_cg_omp_cpp_main::f_map(void*):
+     37, Generating target exit data map(delete: c[:b]) finalize
+_INTERNAL_14_src_cg_omp_cpp_main::o_spmv(DevMat const&, double const*, double*):
+     73, #omp target teams distribute parallel for
+         73, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_spmvERK6DevMatPKdPd_F1L73_2" GPU kernel
+         75, Loop parallelized across teams and threads(128), schedule(static)
+     77, #omp target teams distribute parallel for
+         77, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_spmvERK6DevMatPKdPd_F1L77_4" GPU kernel
+         79, Loop parallelized across teams and threads(128), schedule(static)
+     81, #omp target teams loop
+         81, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_spmvERK6DevMatPKdPd_F1L81_6" GPU kernel
+     83, Loop carried scalar dependence for p at line 83
+     86, #omp target teams distribute parallel for num_teams(nt) thread_limit(tl)
+         86, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_spmvERK6DevMatPKdPd_F1L86_8" GPU kernel
+         88, Loop parallelized across teams and threads, schedule(static)
+     90, #omp target teams distribute parallel for
+         81, Generating Multicore code
+           83, Loop parallelized across threads
+         81, Generating NVIDIA GPU code
+           83, Loop parallelized across teams, threads(128) /* blockIdx.x threadIdx.x */
+               Loop run sequentially 
+               Generating implicit reduction(+:s)
+         90, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_spmvERK6DevMatPKdPd_F1L90_10" GPU kernel
+         92, Loop parallelized across teams and threads(128), schedule(static)
+_INTERNAL_14_src_cg_omp_cpp_main::o_dot(int, double const*, double const*):
+    103, #omp target teams distribute parallel for
+        103, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main5o_dotEiPKdS1__F1L103_20" GPU kernel
+             Loop parallelized across teams and threads(128), schedule(static)
+             Generating reduction(+:s)
+    107, #omp target teams distribute parallel for
+        107, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main5o_dotEiPKdS1__F1L107_22" GPU kernel
+             Loop parallelized across teams and threads(128), schedule(static)
+             Generating reduction(+:s)
+    111, #omp target teams loop
+        111, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main5o_dotEiPKdS1__F1L111_24" GPU kernel
+    116, #omp target teams distribute parallel for num_teams(nt) thread_limit(tl)
+        116, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main5o_dotEiPKdS1__F1L116_26" GPU kernel
+             Loop parallelized across teams and threads, schedule(static)
+             Generating reduction(+:s)
+    116, Generating map(tofrom:s) 
+    120, #omp target teams distribute parallel for
+        111, Generating Multicore code
+          111, Loop parallelized across threads
+               Generating reduction(+:s)
+        111, Generating NVIDIA GPU code
+          111, Loop parallelized across teams, threads(128) /* blockIdx.x threadIdx.x */
+               Generating reduction(+:s)
+        120, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main5o_dotEiPKdS1__F1L120_28" GPU kernel
+             Loop parallelized across teams and threads(128), schedule(static)
+             Generating reduction(+:s)
+    120, Generating map(tofrom:s) 
+_INTERNAL_14_src_cg_omp_cpp_main::o_axpy(int, double, double const*, double*):
+    145, #omp target teams distribute parallel for
+        145, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_axpyEidPKdPd_F1L145_38" GPU kernel
+             Loop parallelized across teams and threads(128), schedule(static)
+    145, #omp target teams loop
+        145, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_axpyEidPKdPd_F1L145_42" GPU kernel
+_INTERNAL_14_src_cg_omp_cpp_main::o_xpay(int, double const*, double, double*):
+    148, #omp target teams distribute parallel for
+        148, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_xpayEiPKddPd_F1L148_56" GPU kernel
+             Loop parallelized across teams and threads(128), schedule(static)
+    148, #omp target teams loop
+        148, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_xpayEiPKddPd_F1L148_60" GPU kernel
+_INTERNAL_14_src_cg_omp_cpp_main::o_pmul(int, double const*, double const*, double*):
+    151, #omp target teams distribute parallel for
+        151, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_pmulEiPKdS1_Pd_F1L151_74" GPU kernel
+             Loop parallelized across teams and threads(128), schedule(static)
+    151, #omp target teams loop
+        151, Generating "nvkernel__ZN32_INTERNAL_14_src_cg_omp_cpp_main6o_pmulEiPKdS1_Pd_F1L151_78" GPU kernel

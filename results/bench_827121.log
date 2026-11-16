@@ -1,0 +1,10 @@
+fini : poisson2d:512 19:38:48
+fini : poisson2d:1024 19:39:10
+fini : poisson2d:2048 19:40:45
+fini : poisson2d:4096 19:50:46
+fini : poisson3d:64 19:50:52
+fini : poisson3d:128 19:51:03
+fini : poisson3d:256 19:52:25
+fini : varcoef2d:1024 19:53:02
+fini : varcoef2d:2048 19:55:59
+termine Mon Nov 16 19:56:02 CET 2026

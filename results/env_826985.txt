@@ -1,0 +1,7 @@
+romeo-a041
+name, memory.total [MiB], clocks.max.memory [MHz], driver_version
+NVIDIA GH200 120GB, 97871 MiB, 2619 MHz, 590.48.01
+
+nvc++ 24.11-0 linuxarm64 target on aarch64 Linux -tp neoverse-v2 
+Cuda compilation tools, release 12.6, V12.6.77
+Build cuda_12.6.r12.6/compiler.34841621_0
